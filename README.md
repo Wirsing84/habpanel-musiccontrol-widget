@@ -6,3 +6,5 @@ This widget can control Sound devices via HABPanel in openHAB2.
 Prerequisits:
 
 - Device is installed via Binding
+
+![Screenshot](Musiccontrol.png)
