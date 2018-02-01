@@ -7,6 +7,6 @@ Prerequisits:
 
 - Device is installed via Binding
 
-![Screenshot](Musiccontrol.png)
+![Screenshot](https://github.com/zr2002/habpanel-musiccontrol-widget/blob/master/Musiccontrol.png)
 
-![Settings](Musiccontrol%20settings.png)
+![Settings](https://github.com/zr2002/habpanel-musiccontrol-widget/blob/master/Musiccontrol%20settings.png)
