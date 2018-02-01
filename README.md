@@ -8,3 +8,5 @@ Prerequisits:
 - Device is installed via Binding
 
 ![Screenshot](Musiccontrol.png)
+
+![Settings](Musiccontrol%20settings.png)
