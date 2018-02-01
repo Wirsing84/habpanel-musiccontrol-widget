@@ -1,0 +1,78 @@
+{
+    "template": "<style>\n    .sonosbutton {width: 90%; height: 4em; border: 0; color: white; background-color: transparent;}\n       .sonosctrl {width: 90%; height: 3em; border: 0; color: white; background-color: transparent;}\n       .power {border: 0; color: white; background-color: transparent; }\n       .sonosbuttontxt_white {width: 100%;height: 4em; border: 0; color: white;font-size: 10pt; background-color: transparent;}\n       .sonosbuttontxt_red {width: 100%;height: 4em; border: 0; color: red;font-size: 10pt; background-color: transparent;}\n       .modgrid {padding-left: 2px; padding-right: 2px; padding-top: 2px; padding-bottom: 2px; font-size:1em;}\n       .nowplaying {padding-left: 2px; padding-right: 2px; padding-top: 2px; padding-bottom: 2px; text-align: left; font-size: 1.5em;}\n       .butticon {font-size:1em;}\n       .row {border: 0px solid white;}\n</style>\n<div id=\"sonos-control\" class=\"container-fluid\">\n    <div class=\"row\">\n        <div class=\"col-xs-6\" style=\"font-size: 1.5em; text-align:left; vertical-align: middle; border: 0px solid white;\">\n            {{config.label}}\n        </div>\n        <div ng-if=\"itemValue(config.power)=='ON'\" class=\"col-xs-6\" style=\"text-align:left; vertical-align: middle; border: 0px solid white;\">\n            <button class=\"power\" style=\"background-size: contain; background-repeat: no-repeat; background-position: left; font-size:25px; color:green;\" ng-click=\"sendCmd(config.power, itemValue(config.power) == 'ON' ? 'OFF' : 'ON')\">\n      <i class=\"glyphicon glyphicon glyphicon-off butticon\" alt=\"Step Forward\"></i>\n      </button>\n        </div>\n        <div ng-if=\"itemValue(config.power)!='ON'\" class=\"col-xs-6\" style=\"text-align:left; vertical-align: middle; border: 0px solid white;\">\n            <button class=\"power\" style=\"background-size: contain; background-repeat: no-repeat; background-position: left; font-size:25px; color:red;\" ng-click=\"sendCmd(config.power, itemValue(config.power) == 'ON' ? 'OFF' : 'ON')\">\n      <i class=\"glyphicon glyphicon glyphicon-off butticon\" alt=\"Step Forward\"></i>\n      </button>\n        </div>\n    </div>\n    <div ng-if=\"itemValue(config.power)=='ON'\">\n        <div class=\"row\">\n            <div class=\"col-xs-4 modgrid\">\n                <div class=\"button\" style=\"height:150px;\" ng-if=\"itemValue(config.artwork) != ''\">\n                    <img style=\"max-width: 90%; max-height: 90%;\" ng-src=\"{{itemValue(config.artwork)}}\" aria-hidden=\"false\" />\n                </div>\n                <div class=\"button\" style=\"height:150px;\" ng-if=\"itemValue(config.artwork) == ''\">\n                    <img style=\"max-width: 90%; max-height: 90%;\" ng-src=\"static/play_pause.svg\" />\n                </div>\n            </div>\n            <div class=\"col-xs-8 nowplaying\">\n                {{ itemValue(config.track) | limitTo: 80 }}{{itemValue(config.track).length > 80 ? '...' : ''}}<br/> {{ itemValue(config.artist)}}<br/> {{ itemValue(config.album)}}\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-xs-4 modgrid\">\n                <button class=\"sonosctrl\" style=\"background-size: contain; background-repeat: no-repeat;background-position: center center;font-size:25px;\" ng-click=\"sendCmd(config.playercontrol, 'PREVIOUS')\">\n         <i class=\"glyphicon glyphicon-step-backward butticon\" alt=\"Step Backward\"></i>\n         </button>\n            </div>\n            <div ng-if=\"itemValue(config.playercontrol)=='PLAY'\" class=\"col-xs-4 modgrid\">\n                <button class=\"sonosctrl\" style=\"background-size: contain; background-repeat: no-repeat;background-position: center center;font-size:25px;\" ng-click=\"sendCmd(config.playercontrol, 'PAUSE')\">\n         <i class=\"glyphicon glyphicon-pause butticon\" alt=\"PAUSE\"></i>\n         </button>\n            </div>\n            <div ng-if=\"itemValue(config.playercontrol)=='PAUSE'\" class=\"col-xs-4 modgrid\">\n                <button class=\"sonosctrl\" style=\"background-size: contain; background-repeat: no-repeat;background-position: center center;font-size:25px;color:green;\" ng-click=\"sendCmd(config.playercontrol, 'PLAY')\">\n         <i class=\"glyphicon glyphicon-play butticon\" alt=\"PAUSE\"></i>\n         </button>\n            </div>\n            <div class=\"col-xs-4 modgrid\">\n                <button class=\"sonosctrl\" style=\"background-size: contain; background-repeat: no-repeat;background-position: center center;font-size:25px;\" ng-click=\"sendCmd(config.playercontrol, 'NEXT')\">\n         <i class=\"glyphicon glyphicon-step-forward butticon\" alt=\"Step Forward\"></i>\n         </button>\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-xs-12\">\n                <div ng-init=\"slider = {\n            'item': config.volume,\n            'vertical': false,\n            'floor': 0,\n            'ceil': 50,\n            'step': 1,\n            'precision': 1,\n            'hidelabel': false,\n            'hidelimits': false,\n            'hidepointer': false,\n            'showticks': false,\n            'bigslider': false\n            }\">\n                </div>\n                <widget-slider ng-model=\"slider\" />\n            </div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-xs-4 modgrid\">\n            <button class=\"sonosbutton\" style=\"background-image: url({{config.preset_1}}); background-color: white; background-size: contain; background-repeat: no-repeat;background-position: center center\" ng-click=\"sendCmd(config.preset, '1')\">\n         </button>\n        </div>\n        <div class=\"col-xs-4 modgrid\">\n            <button class=\"sonosbutton\" style=\"background-image: url('https://cdn-radiotime-logos.tunein.com/s17492q.png'); background-color: white; background-size: contain; background-repeat: no-repeat;background-position: center center\" ng-click=\"sendCmd(config.preset, '2')\">\n         </button>\n        </div>\n        <div class=\"col-xs-4 modgrid\">\n            <button class=\"sonosbutton\" style=\"background-image: url('https://cdn-radiotime-logos.tunein.com/s14991q.png'); background-color: white; background-size: contain; background-repeat: no-repeat;background-position: center center\" ng-click=\"sendCmd(config.preset, '3')\">\n         </button>\n        </div>\n    </div>\n    <div ng-if=\"config.show_zoneadd == true\">\n      \t<div class=\"row\">\n        \t<div class=\"col-xs-4 modgrid\">\n            <button class=\"sonosbuttontxt_red\" style=\"background-size: contain; background-repeat: no-repeat;background-position: center center\" ng-click=\"sendCmd('sw_sonos_livingroom_standalone', 'ON')\">\n         \t\t\t<i class=\"glyphicon glyphicon-fullscreen\" alt=\"Step Backward\"></i><br>\n         \t\t\t<b>Ungroup</b>\n         \t\t</button>\n        \t</div>\n        \t<div class=\"col-xs-4 modgrid\">\n            <button class=\"sonosbuttontxt_white\" style=\"background-size: contain; background-repeat: no-repeat;background-position: center center\" ng-click=\"sendCmd(config.zoneadd, 'Buero')\"> \n         \t\t<i class=\"glyphicon glyphicon-plus-sign butticon\" alt=\"Step Backward\"></i><br>\n         \t\t<b>{{config.zoneadd_device}}</b>\n         \t\t</button>\n        \t</div>\n        \t<div class=\"col-xs-4 modgrid\">\n            <button class=\"sonosbuttontxt_white\" style=\"background-size: contain; background-repeat: no-repeat;background-position: center center\" ng-click=\"sendCmd('sw_sonos_group_bad_with_livingroom', 'ON')\">\t\t\t\n         \t\t\t<i class=\"glyphicon glyphicon-plus-sign butticon\" alt=\"Step Backward\"></i><br>\n         \t\t\t<b>Büro</b>\n         \t\t</button>\n        \t</div>\n       </div>\n    </div>\n</div>\n                    ",
+    "name": "Musiccontrol",
+    "author": "Rene Zierau",
+    "settings": [
+        {
+            "type": "string",
+            "id": "label",
+            "label": "Label"
+        },
+        {
+            "type": "item",
+            "id": "artwork",
+            "description": "Cover",
+            "label": "Artwork"
+        },
+        {
+            "type": "item",
+            "id": "track",
+            "description": "Songname, Radiosender",
+            "label": "Track"
+        },
+        {
+            "type": "item",
+            "id": "album",
+            "label": "Album",
+            "description": "Album"
+        },
+        {
+            "type": "item",
+            "id": "artist",
+            "label": "Artist"
+        },
+        {
+            "type": "item",
+            "id": "power",
+            "label": "Power"
+        },
+        {
+            "type": "item",
+            "id": "volume",
+            "label": "Volume"
+        },
+        {
+            "type": "item",
+            "id": "playercontrol",
+            "label": "Playercontrol"
+        },
+        {
+            "type": "item",
+            "id": "preset",
+            "label": "Preset"
+        },
+        {
+            "type": "string",
+            "id": "preset_1",
+            "label": "Preset 1 Logo",
+            "description": "Enter URL for Preset 1"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_zoneadd",
+            "label": "Show Zone menu"
+        },
+        {
+            "type": "item",
+            "id": "zoneadd",
+            "label": "Zone Add",
+            "description": "Item for ZoneAdd"
+        },
+        {
+            "type": "string",
+            "id": "zoneadd_device",
+            "label": "Devicename for Zone Add",
+            "description": "Add devicename for zone"
+        }
+    ]
+}
