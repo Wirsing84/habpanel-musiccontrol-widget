@@ -8,10 +8,10 @@
 .butticon {font-size:1em;}\n
 .row {border: 0px solid white;}\n</style>\n<div id=\"sonos-control\" class=\"container-fluid\">\n    <div class=\"row\">\n
  <div ng-if=\"itemValue(config.power)=='ON'\" class=\"col-xs-6\" style=\"text-align:left; vertical-align: middle; border: 0px solid white;\">\n
-     <button class=\"power\" style=\"background-size: contain; background-repeat: no-repeat; background-position: left; font-size:25px; color:green;\" ng-click=\"sendCmd(config.power, itemValue(config.power) == 'ON' ? 'OFF' : 'ON')\">\n      <i class=\"glyphicon glyphicon glyphicon-off butticon\" alt=\"Step Forward\"></i>\n      </button>\n
+     <button class=\"power\" style=\"background-size: contain; background-repeat: no-repeat; background-position: left; font-size:25px; color:green;\" ng-click=\"sendCmd(config.power, itemValue(config.power) == 'ON' ? 'OFF' : 'ON')\">\n      <i class=\"glyphicon glyphicon glyphicon-off butticon\" alt=\"Turn Off\"></i>\n      </button>\n
  </div>\n
  <div ng-if=\"itemValue(config.power)!='ON'\" class=\"col-xs-6\" style=\"text-align:left; vertical-align: middle; border: 0px solid white;\">\n
-     <button class=\"power\" style=\"background-size: contain; background-repeat: no-repeat; background-position: left; font-size:25px; color:red;\" ng-click=\"sendCmd(config.power, itemValue(config.power) == 'ON' ? 'OFF' : 'ON')\">\n      <i class=\"glyphicon glyphicon glyphicon-off butticon\" alt=\"Step Forward\"></i>\n      </button>\n
+     <button class=\"power\" style=\"background-size: contain; background-repeat: no-repeat; background-position: left; font-size:25px; color:red;\" ng-click=\"sendCmd(config.power, itemValue(config.power) == 'ON' ? 'OFF' : 'ON')\">\n      <i class=\"glyphicon glyphicon glyphicon-off butticon\" alt=\"Turn On\"></i>\n      </button>\n
  </div>\n    </div>\n    <div ng-if=\"itemValue(config.power)=='ON'\">\n
  <div class=\"col-xs-6\" style=\"font-size: 1.5em; text-align:left; vertical-align: middle; border: 0px solid white;\">\n
      {{config.label}}\n
@@ -76,7 +76,7 @@
      'hidelimits': true,\n
      'hidepointer': false,\n
      'showticks': false,\n
-     'bigslider': true\n
+     'bigslider': false\n
      }\">\n
 
   </div>\n
