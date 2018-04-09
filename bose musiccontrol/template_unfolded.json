@@ -5,24 +5,42 @@
 .sonosbuttontxt_white {width: 100%;height: 4em; border: 0; color: white;font-size: 10pt; background-color: transparent;}\n
 .sonosbuttontxt_red {width: 100%;height: 4em; border: 0; color: red;font-size: 10pt; background-color: transparent;}\n
 .modgrid {padding-left: 2px; padding-right: 2px; padding-top: 2px; padding-bottom: 2px; font-size:1em;}\n
+.presetsgrid {padding-left: 0px; padding-right: 0px; padding-top: 0px; padding-bottom: 0px; font-size:1em; }\n
+.presetsbutton {width: 100%; height: 4em; border: 1px solid #262423; background-color: #454141; color: #969592; font-size: 20px; font-weight: 700;}\n
 .nowplaying {padding-left: 2px; padding-right: 2px; padding-top: 2px; padding-bottom: 2px; text-align: left; font-size: 1.5em;}\n
 .butticon {font-size:1em;}\n
 .row {border: 0px solid white;}\n</style>\n<div id=\"sonos-control\" class=\"container-fluid\">\n
 <div class=\"row\">\n
- <div class=\"col-xs-6\" style=\"font-size: 1.5em; text-align:left; vertical-align: middle; border: 0px solid white;\">\n
-   {{config.label}}\n
- </div>\n
- <div ng-if=\"itemValue(config.power)=='ON'\" class=\"col-xs-6\" style=\"text-align:left; vertical-align: middle; border: 0px solid white;\">\n
-   <button class=\"power\" style=\"background-size: contain; background-repeat: no-repeat; background-position: left; font-size:25px; color:green;\" ng-click=\"sendCmd(config.power, itemValue(config.power) == 'ON' ? 'OFF' : 'ON')\">\n
+
+
+<div ng-if=\"itemValue(config.power)=='ON'\" class=\"col-xs-1\" style=\"text-align:left; vertical-align: middle; border: 0px solid white;\">\n
+   <button class=\"power\" style=\"background-size: contain; background-repeat: no-repeat; background-position: left; font-size:25px; color:white;\" ng-click=\"sendCmd(config.power, itemValue(config.power) == 'ON' ? 'OFF' : 'ON')\">\n
   <i class=\"glyphicon glyphicon glyphicon-off butticon\" alt=\"Turn Off\"></i>\n
   </button>\n
  </div>\n
- <div ng-if=\"itemValue(config.power)!='ON'\" class=\"col-xs-6\" style=\"text-align:left; vertical-align: middle; border: 0px solid white;\">\n
-   <button class=\"power\" style=\"background-size: contain; background-repeat: no-repeat; background-position: left; font-size:25px; color:red;\" ng-click=\"sendCmd(config.power, itemValue(config.power) == 'ON' ? 'OFF' : 'ON')\">\n
+ <div ng-if=\"itemValue(config.power)!='ON'\" class=\"col-xs-1\" style=\"text-align:left; vertical-align: middle; border: 0px solid white;\">\n
+   <button class=\"power\" style=\"background-size: contain; background-repeat: no-repeat; background-position: left; font-size:25px; color:white;\" ng-click=\"sendCmd(config.power, itemValue(config.power) == 'ON' ? 'OFF' : 'ON')\">\n
   <i class=\"glyphicon glyphicon glyphicon-off butticon\" alt=\"Turn On\"></i>\n
   </button>\n
  </div>\n
+
+
+
+ <div class=\"col-xs-11\" style=\"font-size: 1.5em; text-align:left; vertical-align: bottom; border: 0px solid white;\">\n
+   {{config.label}}\n
+ </div>\n
+
+
+
+ 
+
+
+
+
 </div>\n
+
+
+
 <div ng-if=\"itemValue(config.power)=='ON'\">\n
  
 
@@ -127,36 +145,36 @@
  </div>\n
 </div>\n
 <div class=\"row\">\n
- <div class=\"col-xs-4 modgrid\">\n
+ <div class=\"col-xs-4 presetsgrid\">\n
 
- <button class=\"sonosbutton\" style=\"background-color: black; color: white; font-size: 16px;\" ng-click=\"sendCmd(config.preset, '1')\">1\n
+ <button class=\"presetsbutton\" style=\"background-color: black; color: white; font-size: 20px;\" ng-click=\"sendCmd(config.preset, '1')\">1\n
   </button>\n
  </div>\n
- <div class=\"col-xs-4 modgrid\">\n
+ <div class=\"col-xs-4 presetsgrid\">\n
 
- <button class=\"sonosbutton\" style=\"background-color: black; color: white; font-size: 16px;\" ng-click=\"sendCmd(config.preset, '2')\">2\n
+ <button class=\"presetsbutton\" style=\"background-color: black; color: white; font-size: 20px;\" ng-click=\"sendCmd(config.preset, '2')\">2\n
   </button>\n
  </div>\n
- <div class=\"col-xs-4 modgrid\">\n
+ <div class=\"col-xs-4 presetsgrid\">\n
 
- <button class=\"sonosbutton\" style=\"background-color: black; color: white; font-size: 16px;\" ng-click=\"sendCmd(config.preset, '3')\">3\n
+ <button class=\"presetsbutton\" style=\"background-color: black; color: white; font-size: 20px;\" ng-click=\"sendCmd(config.preset, '3')\">3\n
   </button>\n
  </div>\n
 </div>
 <div class=\"row\">\n
- <div class=\"col-xs-4 modgrid\">\n
+ <div class=\"col-xs-4 presetsgrid\">\n
 
- <button class=\"sonosbutton\" style=\"background-color: black; color: white; font-size: 16px;\" ng-click=\"sendCmd(config.preset, '4')\">4\n
+ <button class=\"presetsbutton\" style=\"background-color: black; color: white; font-size: 20px;\" ng-click=\"sendCmd(config.preset, '4')\">4\n
   </button>\n
  </div>\n
- <div class=\"col-xs-4 modgrid\">\n
+ <div class=\"col-xs-4 presetsgrid\">\n
 
- <button class=\"sonosbutton\" style=\"background-color: black; color: white; font-size: 16px;\" ng-click=\"sendCmd(config.preset, '5')\">5\n
+ <button class=\"presetsbutton\" style=\"background-color: black; color: white; font-size: 20px;\" ng-click=\"sendCmd(config.preset, '5')\">5\n
   </button>\n
  </div>\n
- <div class=\"col-xs-4 modgrid\">\n
+ <div class=\"col-xs-4 presetsgrid\">\n
 
- <button class=\"sonosbutton\" style=\"background-color: black; color: white; font-size: 16px;\" ng-click=\"sendCmd(config.preset, '6')\">6\n
+ <button class=\"presetsbutton\" style=\"background-color: black; color: white; font-size: 20px;\" ng-click=\"sendCmd(config.preset, '6')\">6\n
   </button>\n
  </div>\n
 </div>
